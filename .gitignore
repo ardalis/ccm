@@ -8,3 +8,8 @@
 /source/CCMTests/obj
 /source/ccmUI/obj
 /source/vsCCM/obj
+
+bin
+obj
+.vs
+.suo
