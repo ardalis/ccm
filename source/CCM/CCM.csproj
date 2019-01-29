@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregateOutputter.cs" />
     <Compile Include="CCMOutputter.cs" />
     <Compile Include="ConsoleOutputter.cs" />
     <Compile Include="CSVOutputter.cs" />

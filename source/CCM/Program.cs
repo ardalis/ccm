@@ -1,11 +1,10 @@
+﻿using CCMEngine;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using CCMEngine;
 using System.IO;
-using System.Xml;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Xml;
 
 namespace CCM
 {
@@ -71,6 +70,9 @@ namespace CCM
 
             if (outputType.Equals(CCMOutputter.CSVOutputType, StringComparison.OrdinalIgnoreCase))
                 return new CSVOutputter();
+
+            if (outputType.Equals(CCMOutputter.AggregateOutputType, StringComparison.OrdinalIgnoreCase))
+                return new AggregateOutputter();
 
             return new ConsoleOutputter();
         }
