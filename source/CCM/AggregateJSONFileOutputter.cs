@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CCMEngine;
+using System.Collections.Generic;
 using System.IO;
-using CCMEngine;
 
 namespace CCM
 {
@@ -9,8 +9,8 @@ namespace CCM
         public override void Output(List<ccMetric> metrics, List<ErrorInfo> errors, bool verbose)
         {
             File.WriteAllText("complexity.json", $@"{{
-              ""aggregateComplexity"":{metrics.AggregateComplexity()}
-            }}");
+  ""aggregateComplexity"":{metrics.AggregateComplexity()}
+}}");
         }
     }
 }
