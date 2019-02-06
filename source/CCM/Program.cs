@@ -71,8 +71,14 @@ namespace CCM
             if (outputType.Equals(CCMOutputter.CSVOutputType, StringComparison.OrdinalIgnoreCase))
                 return new CSVOutputter();
 
-            if (outputType.Equals(CCMOutputter.AggregateOutputType, StringComparison.OrdinalIgnoreCase))
-                return new AggregateOutputter();
+            if (outputType.Equals(CCMOutputter.AggregateConsoleOutputType, StringComparison.OrdinalIgnoreCase))
+                return new AggregateConsoleOutputter();
+
+            if (outputType.Equals(CCMOutputter.AggregateJSONFileOutputType, StringComparison.OrdinalIgnoreCase))
+                return new AggregateJSONFileOutputter();
+
+            if (outputType.Equals(CCMOutputter.AggregateTeamCityOutputType, StringComparison.OrdinalIgnoreCase))
+                return new AggregateTeamCityOutputter();
 
             return new ConsoleOutputter();
         }

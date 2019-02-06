@@ -75,7 +75,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregateOutputter.cs" />
+    <Compile Include="AggregateConsoleOutputter.cs" />
+    <Compile Include="AggregateJSONFileOutputter.cs" />
+    <Compile Include="AggregateTeamCityOutputter.cs" />
     <Compile Include="CCMOutputter.cs" />
     <Compile Include="ConsoleOutputter.cs" />
     <Compile Include="CSVOutputter.cs" />
