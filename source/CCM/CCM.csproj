@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregateAzureDevOpsOutputter.cs" />
     <Compile Include="AggregateConsoleOutputter.cs" />
     <Compile Include="AggregateJSONFileOutputter.cs" />
     <Compile Include="AggregateTeamCityOutputter.cs" />

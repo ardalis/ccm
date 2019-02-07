@@ -80,6 +80,9 @@ namespace CCM
             if (outputType.Equals(CCMOutputter.AggregateTeamCityOutputType, StringComparison.OrdinalIgnoreCase))
                 return new AggregateTeamCityOutputter();
 
+            if (outputType.Equals(CCMOutputter.AggregateAzureDevOpsOutputType, StringComparison.OrdinalIgnoreCase))
+                return new AggregateAzureDevOpsOutputter();
+
             return new ConsoleOutputter();
         }
 

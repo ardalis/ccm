@@ -12,6 +12,7 @@ namespace CCM
         public static readonly string AggregateConsoleOutputType = "AggregateConsole";
         public static readonly string AggregateJSONFileOutputType = "AggregateJSONFile";
         public static readonly string AggregateTeamCityOutputType = "AggregateTeamCity";
+        public static readonly string AggregateAzureDevOpsOutputType = "AggregateAzureDevOps";
 
         public abstract void Output(List<ccMetric> metrics, List<ErrorInfo> errors, bool verbose);
     }
