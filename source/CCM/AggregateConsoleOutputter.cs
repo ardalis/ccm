@@ -1,6 +1,7 @@
 ﻿using CCMEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CCM
 {
@@ -8,7 +9,8 @@ namespace CCM
     {
         public override void Output(List<ccMetric> metrics, List<ErrorInfo> errors, bool verbose)
         {
-            Console.WriteLine(metrics.AggregateComplexity());
+            int aggregateComplexitySum = metrics.Sum(m => m.AggregateComplexity);
+            Console.WriteLine(aggregateComplexitySum);
         }
     }
 }

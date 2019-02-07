@@ -1,15 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace CCMEngine
 {
-  public class ccMetric
+    public class ccMetric
   {
     public string Filename { get; set; }
     public string Unit { get; set; }
     public int CCM { get; set; }
-    public object Custom { get; set; }
+    public int AggregateComplexity
+    {
+        get
+        {
+            if (CCM < 0) throw new ArgumentOutOfRangeException(nameof(CCM), "Cyclomatic Complexity cannot be negative.");
+            return CCM / 10;
+        }
+    }
+
+      public object Custom { get; set; }
     public int StartLineNumber { get; set; }
     public int EndLineNumber { get; set; }
 
@@ -17,7 +24,7 @@ namespace CCMEngine
     {
       if (ccm >= 51)
         return "untestable, very high risk";
-      if (ccm >= 21) 
+      if (ccm >= 21)
         return "complex, high risk";
       else if (ccm >= 11)
         return "more complex, moderate risk";
