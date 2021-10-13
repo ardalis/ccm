@@ -1,22 +1,28 @@
-CCM
-===
-
 ## Overview
 
-CCM is a tool that analyzes c, c++, c#, javascript and TypeScript code and reports back with cyclomatic complexity metric.
+CCM (Cyclomatic Complexity Metrics) is a tool that analyzes c, c++, c#, javascript and TypeScript code and reports back with cyclomatic complexity metric.
 
 There are two parts included with the installer:
 
 * CCM.exe; a command line executable that will analyze code bases and report back with cyclomatic complexity metrics.
-* vsCCM; a Visual Studio 2008, 2010 and 2012 add-in that will add a new toolbar for integrating CCM with Visual Studio.
+* vsCCM; a Visual Studio 2008, 2010 and 2012 add-in that will add a new toolbar for integrating CCM with Visual Studio. This hasn't been updated in a while.
 
 ## Command line usage
+
 To use CCM.exe, simply use one of the two modes for invocation:
 
-* CCM.exe ```<path-to-config-file>```
+```powershell
+CCM.exe ```<path-to-config-file>```
+```
+
+or
+
+```powershell
 * CCM.exe ```<folder-path-to-analyze>``` ```[/xml]``` ```[/ignorecases]``` ```[/threshold=5]``` ```[/nummetrics=10]``` ```[v]``` 
+```
 
 ### Arguments
+
 ```
    <path-to-config-file>    Path to configuration file. See structure of file below. 
                             This option gives the best control over how ccm behaves.
@@ -29,6 +35,7 @@ To use CCM.exe, simply use one of the two modes for invocation:
 ```
 
 ### Configuration file
+
 Below is an example of a configuration file.
 
 ```
@@ -41,6 +48,7 @@ Below is an example of a configuration file.
       <folder>..\..\code</folder>
    </analyze>
    <recursive>yes</recursive>
+   <verbose>yes</verbose>
    <outputter>XML</outputter>
    <suppressMethodSignatures>yes</suppressMethodSignatures>
    <switchStatementBehavior>IgnoreCases</switchStatementBehavior>
@@ -55,6 +63,7 @@ Below is an example of a configuration file.
 * ```<exclude>``` element can be used to exclude files and/or folders from analysis.
 * ```<analyze>``` element specified which folders to analyze. All paths in the ```<folder>``` element is relative to the location of the configuration file.
 * ```<recursive>``` element tells CCM to traverse folders or not.
+* ```<verbose>``` element tells CCM to output folders/files as it analyzes them or not.
 * ```<outputter>``` element tells CCM how to output the data. Valid values are 'XML', 'Tabbed', 'Text', 'CSV'
 * ```<suppressMethodSignatures>``` set to 'yes' and CCM will only print the name of the method and not the full signature.
 * ```<switchStatementBehavior>``` set to 'IgnoreCases' and CCM will not count each case statement in switch blocks as a branching point.
@@ -63,8 +72,10 @@ Below is an example of a configuration file.
 * ```<fileExtensions>``` can be used to add additional file extensions for analysis. Per default, these are included: .h, .cpp, .c, .hpp, .cs, .js and .ts 
 
 ### Example output
+
 Below is example output from the Text outputter (can be contolled in the ```<outputter>``` element in the config file).
-```
+
+```text
 Driver::HandleDirectory(string basePath,string path) : 7 - simple, without much risk (\Driver.cs@line 141)
 Driver::IsValidFile(string filename) : 6 - simple, without much risk (\Driver.cs@line 84)
 Program::CreateConfigurationFromArgs(string [ ] args) : 6 - simple, without much risk (\Program.cs@line 71)
@@ -80,9 +91,16 @@ Program::Main(string [ ] args) : 2 - simple, without much risk (\Program.cs@line
 ```
 
 ## Platforms
-CCM is built in C#, targetting .NET 3.5 and as such runs on Windows. The commandline version, CCM.exe, can run on Linux distributions using the mono framework (http://www.monoproject.org).
+
+CCM is built in C#, targetting .NET 3.5 and as such runs on Windows. The commandline version, CCM.exe, can run on Linux distributions using the mono framework (http://www.monoproject.org). It can target code running against any platform since it only parses source files, it doesn't compile or build anything.
 
 ## Building the code
+
+### Command Line
+
+Just build the solution and the command line tool will be in the root level `/bin` folder.
+
+### Installer
 
 To build installer, follow these steps:
 
