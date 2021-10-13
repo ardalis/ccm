@@ -128,7 +128,7 @@ namespace CCM
 
         public void StartAnalyze(StreamReader fileStream, string fileName)
         {
-            Console.WriteLine($"Analyzing: {fileName}");
+            if(configFile.Verbose) Console.WriteLine($"Analyzing: {fileName}");
             AnalyzeThreadParameters parameters = new AnalyzeThreadParameters();
             parameters.filename = fileName;
             parameters.stream = fileStream;
@@ -141,7 +141,7 @@ namespace CCM
 
         private void HandleDirectory(string basePath, string path)
         {
-            Console.WriteLine($"HandleDirectory: {path}");  
+            if(configFile.Verbose) Console.WriteLine($"HandleDirectory: {path}");  
             if (Directory.Exists(path) && !PathShouldBeExcluded(path))
             {
                 string[] files = Directory.GetFiles(path);

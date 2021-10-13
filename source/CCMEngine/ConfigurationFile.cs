@@ -59,6 +59,21 @@ namespace CCMEngine
             }
         }
 
+        private void ParseVerboseSetting(XmlDocument doc)
+        {
+            XmlElement verbose = (XmlElement)doc.SelectSingleNode("/ccm/verbose");
+
+            if (null != verbose)
+            {
+                string setting = verbose.InnerText;
+
+                if (setting.ToLower().Equals("yes") || setting.ToLower().Equals("true") || setting.Equals("1"))
+                {
+                    Verbose = true;
+                }
+            }
+        }
+
         private void ParseOutputXML(XmlDocument doc)
         {
             XmlElement output = (XmlElement)doc.SelectSingleNode("/ccm/outputter");
@@ -170,6 +185,7 @@ namespace CCMEngine
             ParseExcludes(doc);
             ParseAnalyzeFolders(doc);
             ParseRecursiveSetting(doc);
+            ParseVerboseSetting(doc);
             ParseNumMetrics(doc);
             ParseOutputXML(doc);
             ParseThreshold(doc);
@@ -248,6 +264,8 @@ namespace CCMEngine
                 return this.recursive;
             }
         }
+
+        public bool Verbose { get; set; }
 
         public string OutputType
         {
